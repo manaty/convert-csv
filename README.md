@@ -1,11 +1,11 @@
 # convert-csv
-AI tool to convert your input csv to the same format as an output csv 
+AI tool to convert your input [csv](https://www.ietf.org/rfc/rfc4180.txt) to the same format as an output csv 
 
 ## Pain point
 You created a program that handle some specific csv file but your users keep using csv files that do not comply with your format  
 
 ## Solution 
-With python installed and an openAI key set in your env variables (set it in the ./private/keys.json ) run the setup script
+With python installed and an [openAI key](./private/keys.json) run the setup script
 ```
 . setup_environment.sh
 ```  
@@ -13,7 +13,7 @@ With python installed and an openAI key set in your env variables (set it in the
 Run the script that will infer the transformation between your client file and your desired file format.
 
 ```
-python3 infer_transfo.py
+python infer_transfo.py
 ```
 
 this creates a json file with the list of expression to transform your file.
@@ -22,7 +22,7 @@ EDIT THIS FILE AND CHECK ITS CONTENT, this is mandatory to make sure no maliciou
 
 Run the transformation by selecting the input file (it could be different than input file used in the previous step) and the transformation file.
 ```
-python3 transform_csv.py
+python transform_csv.py
 ```
 
 ## Note about the CLI commands

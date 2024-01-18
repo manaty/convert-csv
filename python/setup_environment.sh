@@ -2,7 +2,7 @@
 
 # Create a Python virtual environment
 echo "Creating Python virtual environment for $PROJECT_NAME..."
-python3 -m venv "python-venv"
+python -m venv "python-venv"
 
 # Activate the virtual environment
 echo "Activating the virtual environment..."

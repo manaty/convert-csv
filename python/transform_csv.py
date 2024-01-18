@@ -45,9 +45,10 @@ def choose_file(start_path='.', label="Choose a file or directory:"):
         current_path = os.path.dirname(start_path)
         initial_choice = os.path.basename(start_path)
     else:
-        current_path = start_path
+        current_path = os.path.abspath(start_path)
         initial_choice = None
 
+    print(f"current path:{current_path}")
     while True:
         choices = get_files_and_dirs(current_path)
         choice = questionary.select(label, choices=choices, default=initial_choice).ask()
@@ -70,7 +71,7 @@ def main():
     # check if there is a file called "convert_cookie.txt" if yes read its content in a default_hit variable
     cookie_file = "convert_cookie.json"
     transfo_file = ""
-    default_input_file = ""
+    default_input_file = "."
     if os.path.exists(cookie_file):
         with open(cookie_file, 'r') as f:
             try:

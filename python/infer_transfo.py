@@ -58,17 +58,11 @@ def chatgpt_request(hint, csv_file1, csv_file2):
         return None
 
 
+
 def get_files_and_dirs(path):
-    """ Get a list of files and directories at the given path """
-    files = []
-    dirs = ['../']  # Allow moving up a directory
-    for entry in os.listdir(path):
-        full_path = os.path.join(path, entry)
-        if os.path.isfile(full_path) and entry.endswith('.csv'):
-            files.append(entry)
-        elif os.path.isdir(full_path):
-            dirs.append(entry + '/')
-    return dirs + files
+    """ Helper function to list directories and files in the given path """
+    items = ['../'] + [item + ('/' if os.path.isdir(os.path.join(path, item)) else '') for item in os.listdir(path)]
+    return sorted(items, key=lambda x: (not x.endswith('/'), x))
 
 def choose_file(start_path='.', label="Choose a file or directory:"):
     """ Allow the user to navigate directories and choose a file, with cursor initially on start_path if it's a file """
@@ -76,7 +70,7 @@ def choose_file(start_path='.', label="Choose a file or directory:"):
         current_path = os.path.dirname(start_path)
         initial_choice = os.path.basename(start_path)
     else:
-        current_path = start_path
+        current_path = os.path.abspath(start_path)
         initial_choice = None
 
     while True:
@@ -100,9 +94,10 @@ def generate_transformation_filename(input_filename):
 def main():
     
     cookie_file = "convert_cookie.json"
-    saved_output_file = ""
-    target_format_file = ""
-    default_hint=''
+    saved_output_file = "."
+    target_format_file = "."
+    default_input_file = "."
+    default_hint = ""
     if os.path.exists(cookie_file):
         with open(cookie_file, 'r') as f:
             try:
