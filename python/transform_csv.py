@@ -48,7 +48,7 @@ def choose_file(start_path='.', label="Choose a file or directory:"):
         current_path = os.path.abspath(start_path)
         initial_choice = None
 
-    print(f"current path:{current_path}")
+    #print(f"current path:{current_path}")
     while True:
         choices = get_files_and_dirs(current_path)
         choice = questionary.select(label, choices=choices, default=initial_choice).ask()
@@ -76,7 +76,7 @@ def main():
         with open(cookie_file, 'r') as f:
             try:
                 cookie_data = json.load(f)
-                print(cookie_data)
+                #print(cookie_data)
                 default_input_file = cookie_data.get('input_file', '.')
                 transfo_file = cookie_data.get('transfo_file', '')
             except json.JSONDecodeError:

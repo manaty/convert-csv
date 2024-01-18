@@ -34,10 +34,10 @@ def chatgpt_request(hint, csv_file1, csv_file2):
 
     # read the first 20 lines of csv_file1
     df1 = pd.read_csv(csv_file1, nrows=20)
-    print(f"csv1:\n{df1.to_string()}")
+    #print(f"csv1:\n{df1.to_string()}")
     # read the first 20 lines of csv_file2
     df2 = pd.read_csv(csv_file2, nrows=20)
-    print(f"csv2:\n{df2.to_string()}")
+    #print(f"csv2:\n{df2.to_string()}")
 
     try:
         response = client.chat.completions.create(
@@ -130,7 +130,7 @@ def main():
         return
 
     chatgpt_response = chatgpt_request(hint, file1, file2)
-    print(chatgpt_response)
+    #print(chatgpt_response)
     if not chatgpt_response:
         return
     # Write the response to the output file
