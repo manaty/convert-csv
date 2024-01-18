@@ -2,7 +2,7 @@
 
 # Create a Python virtual environment
 echo "Creating Python virtual environment for $PROJECT_NAME..."
-python -m venv "python-venv"
+python3 -m venv "python-venv"
 
 # Activate the virtual environment
 echo "Activating the virtual environment..."
@@ -17,7 +17,7 @@ pip install questionary
 
 # Set environment variables from keys.json
 echo "Setting up environment variables..."
-KEYS_FILE="../keys.json"
+KEYS_FILE="../private/keys.json"
 
 if [ -f "$KEYS_FILE" ]; then
     while IFS=":" read -r key value

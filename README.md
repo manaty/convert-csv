@@ -13,7 +13,7 @@ With python installed and an openAI key set in your env variables (set it in the
 Run the script that will infer the transformation between your client file and your desired file format.
 
 ```
-python infer_transfo.py
+python3 infer_transfo.py
 ```
 
 this creates a json file with the list of expression to transform your file.
@@ -22,7 +22,7 @@ EDIT THIS FILE AND CHECK ITS CONTENT, this is mandatory to make sure no maliciou
 
 Run the transformation by selecting the input file (it could be different than input file used in the previous step) and the transformation file.
 ```
-python transform_csv.py
+python3 transform_csv.py
 ```
 
 ## Note about the CLI commands
